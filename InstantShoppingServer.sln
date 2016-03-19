@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantShoppingDataAccess", "InstantShoppingDataAccess\InstantShoppingDataAccess.csproj", "{2A34D38C-9830-4400-9102-BC37E73E607A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantShoppingBL", "InstantShoppingBL\InstantShoppingBL.csproj", "{217ACB41-6303-4B83-BD22-FB355D0D0F17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantShoppingCommon", "InstantShoppingCommon\InstantShoppingCommon.csproj", "{7FC6A40C-17E7-4464-B49A-05FAEF85275B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantShoppingWebAPI", "InstantShoppingWebAPI\InstantShoppingWebAPI.csproj", "{3275A8BC-68EB-4B6D-A93A-9D197F71963E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A34D38C-9830-4400-9102-BC37E73E607A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A34D38C-9830-4400-9102-BC37E73E607A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A34D38C-9830-4400-9102-BC37E73E607A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A34D38C-9830-4400-9102-BC37E73E607A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217ACB41-6303-4B83-BD22-FB355D0D0F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217ACB41-6303-4B83-BD22-FB355D0D0F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217ACB41-6303-4B83-BD22-FB355D0D0F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217ACB41-6303-4B83-BD22-FB355D0D0F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC6A40C-17E7-4464-B49A-05FAEF85275B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC6A40C-17E7-4464-B49A-05FAEF85275B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC6A40C-17E7-4464-B49A-05FAEF85275B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC6A40C-17E7-4464-B49A-05FAEF85275B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3275A8BC-68EB-4B6D-A93A-9D197F71963E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3275A8BC-68EB-4B6D-A93A-9D197F71963E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3275A8BC-68EB-4B6D-A93A-9D197F71963E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3275A8BC-68EB-4B6D-A93A-9D197F71963E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

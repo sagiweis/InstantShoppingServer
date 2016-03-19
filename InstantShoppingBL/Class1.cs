@@ -8,6 +8,5 @@ namespace InstantShoppingBL
 {
     public class Class1
     {
-        string hello;
     }
 }

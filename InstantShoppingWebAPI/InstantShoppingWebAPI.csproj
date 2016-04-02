@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,8 +103,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InstantShoppingBL\InstantShoppingBL.csproj">
+      <Project>{217acb41-6303-4b83-bd22-fb355d0d0f17}</Project>
+      <Name>InstantShoppingBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InstantShoppingCommon\InstantShoppingCommon.csproj">
+      <Project>{7fc6a40c-17e7-4464-b49a-05faef85275b}</Project>
+      <Name>InstantShoppingCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

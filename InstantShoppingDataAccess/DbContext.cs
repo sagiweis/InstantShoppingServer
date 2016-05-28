@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+﻿
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -23,8 +23,8 @@ namespace InstantShoppingDataAccess
         public static DbContext GetInstance()
         {
             string ip = "localhost";
-            string port = "27015";
-            string dbName = "InstantShopping";
+            string port = "27017";
+            string dbName = "instantShopping";
 
             if (_instance == null)
             {
@@ -42,5 +42,6 @@ namespace InstantShoppingDataAccess
         {
             return _database.GetCollection<T>(collectionName);
         }
+
     }
 }

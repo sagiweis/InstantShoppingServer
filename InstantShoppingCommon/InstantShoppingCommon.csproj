@@ -48,6 +48,7 @@
     <Compile Include="HistoryShoppingList.cs" />
     <Compile Include="Market.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductOrder.cs" />
     <Compile Include="ShoppingList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

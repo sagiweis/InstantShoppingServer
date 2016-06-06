@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InstantShoppingDataAccess;
 using InstantShoppingCommon;
 
+
 namespace InstantShoppingBL
 {
     public class GroupBL
@@ -14,17 +15,17 @@ namespace InstantShoppingBL
         {
             return GroupsDataAccess.GetInstance().GetMyGroups(userId);
         }
-        public static void AddGroup(Group group)
+        public static string AddGroup(Group group)
         {
-            GroupsDataAccess.GetInstance().AddGroup(group);
+            return GroupsDataAccess.GetInstance().AddGroup(group);
         }
         public static void UpdateGroupParticipents(string propertyName, List<string> value, string objectId)
         {
             GroupsDataAccess.GetInstance().UpdateGroupParticipents(propertyName, value,  objectId);
         }
-        public static void MoveListToHistory(string groupObjectId)
+        public static Group MoveListToHistory(string groupObjectId)
         {
-            GroupsDataAccess.GetInstance().MoveListToHistory(groupObjectId);
+            return GroupsDataAccess.GetInstance().MoveListToHistory(groupObjectId);
         }
     }
 }

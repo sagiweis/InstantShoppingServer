@@ -34,9 +34,11 @@ namespace InstantShoppingDataAccess
 
         }
 
-        public void AddGroup(Group group)
+        public string AddGroup(Group group)
         {
+            group._id = new ObjectId();
             _collection.InsertOne(group);
+            return group._id.ToString();
         }
 
 
@@ -56,7 +58,7 @@ namespace InstantShoppingDataAccess
 
         }
 
-        public void MoveListToHistory(string groupObjectId)
+        public Group MoveListToHistory(string groupObjectId)
         {
             Group myGroup = GetGroup(groupObjectId);
             List<HistoryShoppingList> currHistoryList = myGroup.HistoryLists;
@@ -64,6 +66,7 @@ namespace InstantShoppingDataAccess
             myGroup.CurrentList = new ShoppingList();
             myGroup.HistoryLists = currHistoryList;
             SaveGroup(groupObjectId, myGroup);
+            return myGroup;
         }
 
         public void AddProduct(string groupObjectId, Product product)

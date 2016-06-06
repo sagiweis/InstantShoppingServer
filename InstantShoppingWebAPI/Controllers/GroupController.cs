@@ -13,10 +13,10 @@ namespace InstantShoppingWebAPI
     public class GroupController : ApiController
     {
         [HttpGet]
-        public void AddGroup(string name,string imageUrl, string participents)
+        public static string AddGroup(string name,string imageUrl, string participents)
         {
             Group newGroup = new Group(name, imageUrl, JsonConvert.DeserializeObject<List<string>>(participents));
-            GroupBL.AddGroup(newGroup);
+            return GroupBL.AddGroup(newGroup);
         }
 
         [HttpGet]
@@ -34,9 +34,9 @@ namespace InstantShoppingWebAPI
         }
 
         [HttpGet]
-        public void MoveListToHistory(string objectId)
+        public Group MoveListToHistory(string objectId)
         {
-            GroupBL.MoveListToHistory(objectId);
+            return GroupBL.MoveListToHistory(objectId);
 
         }
 

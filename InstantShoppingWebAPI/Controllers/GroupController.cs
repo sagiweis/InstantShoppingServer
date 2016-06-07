@@ -12,11 +12,10 @@ namespace InstantShoppingWebAPI
 {
     public class GroupController : ApiController
     {
-        [HttpGet]
-        public void AddGroup(string name,string imageUrl, string participents)
+        [HttpPost]
+        public void AddGroup([FromBody]Group group)
         {
-            Group newGroup = new Group(name, imageUrl, JsonConvert.DeserializeObject<List<string>>(participents));
-            GroupBL.AddGroup(newGroup);
+            GroupBL.AddGroup(group);
         }
 
         [HttpGet]

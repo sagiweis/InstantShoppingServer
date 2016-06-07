@@ -26,5 +26,7 @@ namespace InstantShoppingCommon
             this.HistoryLists = new List<HistoryShoppingList>();
         }
 
+        public Group() { }
+
     }
 }

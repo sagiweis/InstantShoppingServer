@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace InstantShoppingCommon
 {
-    class ProductOrder
+    public class ProductOrder
     {
+        public string MarketName { get; set; }
+        public string CategoryName { get; set; }
+        public string Before { get; set; }
+        public int Count { get; set; }
     }
 }

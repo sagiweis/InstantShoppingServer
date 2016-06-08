@@ -15,7 +15,7 @@ namespace InstantShoppingWebAPI
         [HttpPost]
         public void AddGroup([FromBody]Group group)
         {
-            GroupBL.AddGroup(group);
+            return GroupBL.AddGroup(group);
         }
 
         [HttpGet]

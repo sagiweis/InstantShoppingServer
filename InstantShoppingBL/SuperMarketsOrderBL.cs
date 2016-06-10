@@ -22,17 +22,22 @@ namespace InstantShoppingBL
 
         }
 
-        public static List<string> GetCategoriesDependecies(string MarketName)
+        public static List<string> GetCategoriesDependecies(string marketID)
         {
             // Create the list for the topologic sort
             Dictionary<string, List<string>> CategoryDependecies = new Dictionary<string, List<string>>();
 
             // TODO: Get Data from DB
-            List<ProductOrder> data = new List<ProductOrder>();
+            List<ProductOrder> data = SuperMarketsOrderDataAccess.GetInstance().GetMarketOrderRecords(marketID);
 
             // For each row in the table for the current market
             foreach (ProductOrder curr in data)
             {
+                if (!CategoryDependecies.ContainsKey(curr.CategoryBefore))
+                {
+                    CategoryDependecies.Add(curr.CategoryBefore, new List<string>());
+                }
+                
                 // Checks if oposite exists
                 ProductOrder oposite = data.Find(o => o.CategoryBefore == curr.CategoryAfter && o.CategoryAfter == curr.CategoryBefore);
 
@@ -55,9 +60,16 @@ namespace InstantShoppingBL
             }
 
             //TODO: send to topological sort.
-            var actual = CategoryDependecies.TopoSort(x => x.Key, x => x.Value).ToArray();
+            var actual = CategoryDependecies.TopoSort(x => x.Key, x => x.Value).ToList();
 
-            return new List<string>();
+            List<string> order = new List<string>();
+
+            foreach (var item in actual)
+            {
+                order.Add(item.Key);
+            }
+
+            return order;
         }
 
     }

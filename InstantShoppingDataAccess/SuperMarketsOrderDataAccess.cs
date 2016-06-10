@@ -1,5 +1,4 @@
-﻿
-using InstantShoppingCommon;
+﻿using InstantShoppingCommon;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System;
@@ -35,14 +34,14 @@ namespace InstantShoppingDataAccess
 
         }
 
-
+     
         public void addNewProductOrder(ProductOrder productOrder)
         {
             var filter = Builders<ProductOrder>.Filter.Eq("MarketId", productOrder.MarketId) &
                          Builders<ProductOrder>.Filter.Eq("CategoryBefore", productOrder.CategoryBefore) &
                          Builders<ProductOrder>.Filter.Eq("CategoryAfter", productOrder.CategoryAfter);
             var result = _collection.Find(filter).FirstOrDefault<ProductOrder>(); ;
-            if (result != null)
+            if(result!= null)
             {
                 result.Count++;
                 var filter2 = Builders<ProductOrder>.Filter.Eq("_id", new ObjectId((result._id).ToString()));
@@ -53,6 +52,13 @@ namespace InstantShoppingDataAccess
                 _collection.InsertOne(productOrder);
             }
 
+        }
+
+        public List<ProductOrder> GetMarketOrderRecords(string marketID)
+        {
+            var filter = Builders<ProductOrder>.Filter.Eq("MarketId", new ObjectId(marketID));
+            List<ProductOrder> result = _collection.Find <ProductOrder>(filter).ToList<ProductOrder>();
+            return result;
         }
     }
 }

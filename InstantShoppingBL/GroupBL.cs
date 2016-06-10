@@ -71,5 +71,10 @@ namespace InstantShoppingBL
 
             return g;
         }
+
+        public static Group GetGroupByID (string groupObjectId)
+        {
+            return GroupsDataAccess.GetInstance().GetGroup(groupObjectId);
+        }
     }
 }

@@ -22,9 +22,9 @@ namespace InstantShoppingWebAPI.Controllers
         }
 
         [HttpGet]
-        public List<string> GetProductsOrder(string marketID)
+        public ShoppingList GetOrderedList (string groupID, string marketID)
         {
-            return SuperMarketsOrderBL.GetCategoriesDependecies(marketID);
+            return SuperMarketsOrderBL.GetSortedList(groupID, marketID);
         }
     }
 }

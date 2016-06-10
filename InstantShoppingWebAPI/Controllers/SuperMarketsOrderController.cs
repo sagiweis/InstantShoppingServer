@@ -20,5 +20,11 @@ namespace InstantShoppingWebAPI.Controllers
         {
             SuperMarketsOrderBL.addNewProductOrder(report.MarketId, report.CategoryAfter, report.CategoryBefore);
         }
+
+        [HttpGet]
+        public List<string> GetProductsOrder(string marketID)
+        {
+            return SuperMarketsOrderBL.GetCategoriesDependecies(marketID);
+        }
     }
 }

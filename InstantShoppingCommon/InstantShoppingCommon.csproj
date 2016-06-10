@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="HistoryProduct.cs" />
     <Compile Include="HistoryShoppingList.cs" />
     <Compile Include="Market.cs" />
     <Compile Include="Product.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ProductOrderReport.cs" />
     <Compile Include="ShoppingList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

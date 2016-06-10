@@ -15,10 +15,10 @@ namespace InstantShoppingBL
             ShoppingListDataAccess.GetInstance().AddList(list);
         }
 
-       /* public static void UpdateListStatus(string id, bool wasBought)
-        {
-            return ShoppingListDataAccess.GetInstance().UpdateListStatus(id,wasBought);
-        }*/
+        /* public static void UpdateListStatus(string id, bool wasBought)
+         {
+             return ShoppingListDataAccess.GetInstance().UpdateListStatus(id,wasBought);
+         }*/
 
     }
 }

@@ -17,7 +17,7 @@ namespace InstantShoppingCommon
         public int Count { get; set; }
 
         public ProductOrder(string marketId, string before, string after)
-        {
+    {
             this.MarketId = new ObjectId(marketId);
             this.CategoryBefore = before;
             this.CategoryAfter = after;

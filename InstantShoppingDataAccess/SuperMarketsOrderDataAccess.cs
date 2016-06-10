@@ -54,6 +54,11 @@ namespace InstantShoppingDataAccess
 
         }
 
-       
+        public List<ProductOrder> GetMarketOrderRecords(string marketID)
+        {
+            var filter = Builders<ProductOrder>.Filter.Eq("MarketId", new ObjectId(marketID));
+            List<ProductOrder> result = _collection.Find <ProductOrder>(filter).ToList<ProductOrder>();
+            return result;
+        }
     }
 }

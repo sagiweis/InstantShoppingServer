@@ -14,15 +14,14 @@ namespace InstantShoppingCommon
         public double Amount { get; set; }
         public bool wasBought { get; set; }
 
-        public Product(Product pro)
+        public Product(){ }
+        public Product(Product prd)
         {
-            this.ProductName = pro.ProductName;
-            this.Category = pro.Category;
-            this.Description = pro.Description;
-            this.Amount = pro.Amount;
-            this.wasBought = pro.wasBought;
+            this.ProductName = prd.ProductName;
+            this.Category = prd.Category;
+            this.Description = prd.Description;
+            this.Amount = prd.Amount;
+            this.wasBought = prd.wasBought;
         }
     }
-
-   
 }

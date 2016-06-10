@@ -20,5 +20,11 @@ namespace InstantShoppingWebAPI.Controllers
         {
             SuperMarketsOrderBL.addNewProductOrder(id, after, JsonConvert.DeserializeObject<List<string>>(before));
         }
+
+        [HttpGet]
+        public ShoppingList GetOrderedList (string groupID, string marketID)
+        {
+            return SuperMarketsOrderBL.GetSortedList(groupID, marketID);
+        }
     }
 }

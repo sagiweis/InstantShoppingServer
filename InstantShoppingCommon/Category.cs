@@ -10,7 +10,7 @@ namespace InstantShoppingCommon
     public class Category
     {
         public ObjectId _id { get; set; }
-        public string name { get; set; }
-        public List<string> products { get; set; }
+        public string Name { get; set; }
+        public List<string> Products { get; set; }
     }
 }

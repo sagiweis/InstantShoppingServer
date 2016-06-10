@@ -20,5 +20,7 @@ namespace InstantShoppingCommon
             this.Latitude = latitude;
             this.Longitude = longitude;
         }
+
+        public Market() { }
     }
 }

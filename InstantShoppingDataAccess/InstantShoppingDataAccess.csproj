@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext.cs" />
+    <Compile Include="MarketDataAccess.cs" />
     <Compile Include="GroupsDataAccess.cs" />
     <Compile Include="CategoriesDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

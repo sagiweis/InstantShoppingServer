@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesBL.cs" />
+    <Compile Include="MarketBL.cs" />
     <Compile Include="GroupBL.cs" />
     <Compile Include="ShoppingListBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

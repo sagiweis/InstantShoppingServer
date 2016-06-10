@@ -13,7 +13,7 @@ namespace InstantShoppingWebAPI
     public class GroupController : ApiController
     {
         [HttpPost]
-        public void AddGroup([FromBody]Group group)
+        public Group AddGroup([FromBody]Group group)
         {
             return GroupBL.AddGroup(group);
         }

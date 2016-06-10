@@ -17,6 +17,7 @@ namespace InstantShoppingCommon
         public List<HistoryShoppingList> HistoryLists { get; set; }
 
 
+
         public Group(string name, string imageURL, List<string> participents)
         {
             this.Name = name;

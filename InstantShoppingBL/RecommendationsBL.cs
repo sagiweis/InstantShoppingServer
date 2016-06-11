@@ -12,24 +12,18 @@ namespace InstantShoppingBL
     public class RecommendationsBL
     {
 
-        public static string GetRecommendations(string groupObjectId)
+        public static Dictionary<string,double> GetRecommendations(string groupObjectId)
         {
-            GetProductFriquency(groupObjectId);
-            return "";
+            return GetProductFriquency(groupObjectId);
         }
-        public static double GetRecomendedQuntity(string product, List<double> countList)
+        private static double GetRecomendedQuntity(List<double> countList)
         {
             List<double> data = new List<double>();
         
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < countList.Count; i++)
             {
-                data.Add(2.0);
-                data.Add(0.0);
-                data.Add(0.0);
-                data.Add(2.0);
-                data.Add(0.0);
-                data.Add(1.0);
-                data.Add(0.0);
+                data.Add(countList[i]);
+
             }
 
             REngine.SetEnvironmentVariables();
@@ -43,37 +37,23 @@ namespace InstantShoppingBL
             engine.Evaluate("result <- as.numeric(fcast$mean)");
             NumericVector forecastResult = engine.GetSymbol("result").AsNumeric();
             double result = forecastResult.First();
-
-            if (result >= 1)
-            {
-                Console.WriteLine("Go buy milk today");
-            }
-            else
-            {
-                Console.WriteLine("Dont buy milk today");
-            }
-
-            Console.WriteLine("Result = " + result);
-
-
             Console.ReadKey();
             engine.Dispose();
-            return "";
+            return result;
         }
 
-        public static Dictionary<string,double> GetProductFriquency(string groupObjectId)
+        private static Dictionary<string,double> GetProductFriquency(string groupObjectId)
         {
             // Move list to history and gets the group
             Group group = GroupsDataAccess.GetInstance().GetGroup(groupObjectId);
             Dictionary<string, double> dic = new Dictionary<string, double>();
 
             // If there is at least 10 history lists
-            if (group.HistoryLists.Count >= 10)
+            if (group.HistoryLists.Count >= 1)
             {
-                DateTime firstListDate = new DateTime(); ;
+                DateTime firstListDate = DateTime.Now; ;
                 // Get all the lists from the last 3 monthes
                 List<HistoryShoppingList> lists = group.HistoryLists.Where(p => p.ShopDate > (DateTime.Today.AddMonths(-3))).ToList();
-
                 List<HistoryProduct> Allproducts = new List<HistoryProduct>();
                 foreach(HistoryShoppingList list in lists)
                 {
@@ -85,11 +65,8 @@ namespace InstantShoppingBL
                     foreach (Product product in list.ProductsList)
                     {
                         Allproducts.Add(new HistoryProduct(product, list.ShopDate));
-
                     }
-
                 }
-
                while (Allproducts.Count > 0)
                 {
                     List<HistoryProduct> curProducts = Allproducts.Where(p => p.ProductName == Allproducts[0].ProductName).ToList();
@@ -97,20 +74,34 @@ namespace InstantShoppingBL
                     
                     if (curProducts.Count > 2)
                     {
-                        for(int i=0; i<(DateTime.Now - firstListDate).Days; i++)
+                        for(int i=0; i<=(DateTime.Now - firstListDate).Days; i++)
                         {
+                            bool found = false;
                             foreach(HistoryProduct hisPro in curProducts)
                             {
                                 if((hisPro.ShopDate-firstListDate).Days == i)
                                 {
                                     countPro.Add(hisPro.Amount);
-                                }
+                                    found = true;
+                                } 
+                            }
+                            if (!found)
+                            {
+                                countPro.Add(0);
                             }
                         }
-                          
+                        dic.Add(curProducts[0].ProductName, GetRecomendedQuntity(countPro));
+                    } 
+                    // delete the current products          
+                    int count = Allproducts.Count;
+                    for (int index =0; index < count; index++)
+                    {
+                        if (Allproducts[index].ProductName == curProducts[0].ProductName)
+                        {
+                            Allproducts.Remove(Allproducts[index]);
+                            count--;
+                        }
                     }
-                    dic.Add(curProducts[0].ProductName, GetRecomendedQuntity(curProducts[0].ProductName, countPro));
-                    Allproducts.RemoveAll(p => p.ProductName == Allproducts[0].ProductName);
                 }
 
             }

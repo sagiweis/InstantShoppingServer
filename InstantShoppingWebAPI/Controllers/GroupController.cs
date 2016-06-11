@@ -39,6 +39,12 @@ namespace InstantShoppingWebAPI
             return GroupBL.MoveListToHistory(objectId);
 
         }
+        [HttpGet]
+        public void AddProduct(string objectIdGroup,string name,string category,string desc,string amount)
+        {
+             GroupBL.AddProduct(objectIdGroup,new Product(name,category,desc,Convert.ToDouble(amount)));
+
+        }
 
     }
 }

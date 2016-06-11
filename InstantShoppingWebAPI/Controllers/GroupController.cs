@@ -33,10 +33,9 @@ namespace InstantShoppingWebAPI
         }
 
         [HttpGet]
-        public void MoveListToHistory(string objectId)
+        public Group MoveListToHistory(string objectId)
         {
-            GroupBL.MoveListToHistory(objectId);
-
+            return GroupBL.MoveListToHistory(objectId);
         }
 
     }

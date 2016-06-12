@@ -13,7 +13,7 @@ namespace InstantShoppingWebAPI
     public class CategoriesController : ApiController
     {
         [HttpGet]
-        public static List<Category> GetCategories()
+        public List<Category> GetCategories()
         {
             return CategoriesBL.GetCategories();
         }

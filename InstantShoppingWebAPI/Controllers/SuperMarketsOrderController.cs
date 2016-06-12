@@ -15,10 +15,10 @@ namespace InstantShoppingWebAPI.Controllers
 {
     public class SuperMarketsOrderController : ApiController
     {
-        [HttpGet]
-        public void AddNewProductOrder(string id,string after, string before)
+        [HttpPost]
+        public void AddNewProductOrder([FromBody]ProductOrderReport report)
         {
-            SuperMarketsOrderBL.addNewProductOrder(id, after, JsonConvert.DeserializeObject<List<string>>(before));
+            SuperMarketsOrderBL.addNewProductOrder(report.MarketId, report.CategoryAfter, report.CategoryBefore);
         }
 
         [HttpGet]

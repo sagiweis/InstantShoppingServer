@@ -23,14 +23,5 @@ namespace InstantShoppingCommon
             this.Amount = prd.Amount;
             this.wasBought = prd.wasBought;
         }
-
-        public Product(string name, string category, string description,double amount)
-        {
-            this.ProductName = name;
-            this.Category = category;
-            this.Description = description;
-            this.Amount = amount;
-            this.wasBought = false;
-        }
     }
 }

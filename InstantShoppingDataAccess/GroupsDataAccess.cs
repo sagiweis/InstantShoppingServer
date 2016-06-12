@@ -34,11 +34,11 @@ namespace InstantShoppingDataAccess
 
         }
 
-        public string AddGroup(Group group)
+        public Group AddGroup(Group group)
         {
             group._id = new ObjectId();
             _collection.InsertOne(group);
-            return group._id.ToString();
+            return group;
         }
 
 
@@ -102,8 +102,5 @@ namespace InstantShoppingDataAccess
             var filter = Builders<Group>.Filter.Eq("_id", new ObjectId(groupObjectId));
             _collection.ReplaceOne(filter, group);
         }
-
     }
-
-
 }

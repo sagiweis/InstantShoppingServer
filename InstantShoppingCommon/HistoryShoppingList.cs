@@ -12,7 +12,7 @@ namespace InstantShoppingCommon
 
         public HistoryShoppingList(List<Product> list)
         :base(list){
-            this.ShopDate = DateTime.Now;
+            this.ShopDate = new DateTime();
         }
     }
 }

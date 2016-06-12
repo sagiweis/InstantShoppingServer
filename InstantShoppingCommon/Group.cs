@@ -18,7 +18,6 @@ namespace InstantShoppingCommon
         public List<ShoppingRule> Rules { get; set; }
 
 
-
         public Group(string name, string imageURL, List<string> participents)
         {
             this.Name = name;
@@ -27,6 +26,8 @@ namespace InstantShoppingCommon
             this.CurrentList = new ShoppingList();
             this.HistoryLists = new List<HistoryShoppingList>();
         }
+
+        public Group() { }
 
     }
 }

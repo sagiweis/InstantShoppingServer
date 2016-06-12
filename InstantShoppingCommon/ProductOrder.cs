@@ -21,7 +21,7 @@ namespace InstantShoppingCommon
             this.MarketId = new ObjectId(marketId);
             this.CategoryBefore = before;
             this.CategoryAfter = after;
-            this.Count = 0;
+            this.Count = 1;
         }
     }
 }

@@ -26,21 +26,22 @@ namespace InstantShoppingBL
         {
             Group group = GroupBL.GetGroupByID(GroupID);
             ShoppingList list = group.CurrentList;
-            List<string> order = GetCategoriesDependecies(marketID);
+            List<Category> order = GetCategoriesDependecies(marketID);
             ShoppingList ordered = new ShoppingList();
 
             // Adds all products by the category order
-            order.ForEach(c => ordered.ProductsList.AddRange(list.ProductsList.Where(p => p.Category == c)));
+            order.ForEach(c => ordered.ProductsList.AddRange(list.ProductsList.Where(p => c.Products.Contains(p.Name))));
+            
             // Adds the rest of the products
             list.ProductsList.Where(p => !ordered.ProductsList.Contains(p)).ToList()
-                .OrderBy(p=>p.Category).ToList()
+                /*.OrderBy(p=>p.Category).ToList()*/
                 .ForEach(p=> ordered.ProductsList.Add(p));
 
             group.CurrentList = ordered;
             return ordered;
         }
 
-        private static List<string> GetCategoriesDependecies(string marketID)
+        private static List<Category> GetCategoriesDependecies(string marketID)
         {
             // Create the list for the topologic sort
             Dictionary<string, List<string>> CategoryDependecies = new Dictionary<string, List<string>>();
@@ -78,9 +79,11 @@ namespace InstantShoppingBL
             }
 
             // Getting order from topological sort algo.
-            List<string> actual = CategoryDependecies.TopoSort(x => x.Key, x => x.Value).ToDictionary(x => x.Key, x => x.Value).Keys.ToList() ;
+            List<string> actual = CategoryDependecies.TopoSort(x => x.Key, x => x.Value).ToDictionary(x => x.Key, x => x.Value).Keys.ToList();
+            List<Category> categories = CategoriesBL.GetCategories();
+            categories.Sort((a, b) => actual.IndexOf(a.Name) - actual.IndexOf(b.Name));
 
-            return actual;
+            return categories;
         }
 
     }

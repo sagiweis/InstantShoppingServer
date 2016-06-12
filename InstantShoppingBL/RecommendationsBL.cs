@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace InstantShoppingBL
 {
     public class RecommendationsBL
-    {
+    { 
 
         public static Dictionary<string,double> GetRecommendations(string groupObjectId)
         {
@@ -92,7 +92,7 @@ namespace InstantShoppingBL
                         }
                         if(GetRecomendedQuntity(countPro) >= 1)
                         {
-                            dic.Add(curProducts[0].ProductName, GetRecomendedQuntity(countPro));
+                            dic.Add(curProducts[0].ProductName, Math.Round(GetRecomendedQuntity(countPro)));
                         }
                     } 
                     // delete the current products          

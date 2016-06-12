@@ -90,7 +90,10 @@ namespace InstantShoppingBL
                                 countPro.Add(0);
                             }
                         }
-                        dic.Add(curProducts[0].ProductName, GetRecomendedQuntity(countPro));
+                        if(GetRecomendedQuntity(countPro) >= 1)
+                        {
+                            dic.Add(curProducts[0].ProductName, GetRecomendedQuntity(countPro));
+                        }
                     } 
                     // delete the current products          
                     int count = Allproducts.Count;

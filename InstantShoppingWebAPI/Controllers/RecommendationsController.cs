@@ -13,7 +13,7 @@ namespace InstantShoppingWebAPI.Controllers
     public class RecommendationsController : ApiController
     {
         [HttpGet]
-        public Dictionary<string, double> void GetRecommendations(string groupId)
+        public Dictionary<string, double> GetRecommendations(string groupId)
         {
             return RecommendationsBL.GetRecommendations(groupId);
         }

@@ -81,7 +81,7 @@ namespace InstantShoppingDataAccess
             Group myGroup = GetGroup(groupObjectId);
             for(int i=0; i<myGroup.CurrentList.ProductsList.Count; i++)
             {
-                if (myGroup.CurrentList.ProductsList[i].ProductName == product.ProductName)
+                if (myGroup.CurrentList.ProductsList[i].Name == product.Name)
                 {
                     myGroup.CurrentList.ProductsList[i].Amount = product.Amount;
                     myGroup.CurrentList.ProductsList[i].Description = product.Description;
@@ -102,5 +102,13 @@ namespace InstantShoppingDataAccess
             var filter = Builders<Group>.Filter.Eq("_id", new ObjectId(groupObjectId));
             _collection.ReplaceOne(filter, group);
         }
+        public void UpdateGroup(Group group)
+        {
+            var filter = Builders<Group>.Filter.Eq("_id", group._id);
+            _collection.ReplaceOne(filter, group);
+        }
+
     }
+
+
 }

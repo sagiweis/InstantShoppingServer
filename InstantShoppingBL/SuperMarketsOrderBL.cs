@@ -81,9 +81,17 @@ namespace InstantShoppingBL
             // Getting order from topological sort algo.
             List<string> actual = CategoryDependecies.TopoSort(x => x.Key, x => x.Value).ToDictionary(x => x.Key, x => x.Value).Keys.ToList();
             List<Category> categories = CategoriesBL.GetCategories();
-            categories.Sort((a, b) => actual.IndexOf(a.Name) - actual.IndexOf(b.Name));
+            List<Category> filteredCategories = new List<Category>();
 
-            return categories;
+            foreach(Category cat in categories)
+            {
+                if (actual.Contains(cat.Name))
+                    filteredCategories.Add(cat);
+            }
+
+            filteredCategories.Sort((a, b) => actual.IndexOf(a.Name) - actual.IndexOf(b.Name));
+
+            return filteredCategories;
         }
 
     }

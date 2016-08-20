@@ -11,7 +11,7 @@ namespace InstantShoppingCommon
         public DateTime ShopDate { get; set; }
 
         public HistoryProduct(Product prd, DateTime date)
-            :base(prd)
+            : base(prd)
         {
             this.ShopDate = date;
         }

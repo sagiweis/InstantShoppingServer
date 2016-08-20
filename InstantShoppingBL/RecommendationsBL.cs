@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace InstantShoppingBL
 {
     public class RecommendationsBL
-    {
+    { 
 
         public static Dictionary<string,double> GetRecommendations(string groupObjectId)
         {
@@ -28,6 +28,7 @@ namespace InstantShoppingBL
 
             REngine.SetEnvironmentVariables();
             REngine engine = REngine.GetInstance();
+            engine.Initialize();
             NumericVector dataVector = engine.CreateNumericVector(data.ToArray());
             engine.SetSymbol("dataVector", dataVector);
             engine.Evaluate("graphObj <- ts(dataVector, frequency=1, start=c(1, 1, 1))");
@@ -37,7 +38,6 @@ namespace InstantShoppingBL
             engine.Evaluate("result <- as.numeric(fcast$mean)");
             NumericVector forecastResult = engine.GetSymbol("result").AsNumeric();
             double result = forecastResult.First();
-            Console.ReadKey();
             engine.Dispose();
             return result;
         }
@@ -90,7 +90,11 @@ namespace InstantShoppingBL
                                 countPro.Add(0);
                             }
                         }
-                        dic.Add(curProducts[0].Name, GetRecomendedQuntity(countPro));
+                        double quantity = GetRecomendedQuntity(countPro);
+                        if (quantity >= 1)
+                        {
+                            dic.Add(curProducts[0].Name, Math.Round(quantity));
+                        }
                     } 
                     // delete the current products          
                     int count = Allproducts.Count;
